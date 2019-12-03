@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Scans for changes every 1 minute -->
+<configuration scan="true">
+
+    <property name="SERVICE_NAME" value="backend-framework"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>[%highlight(%-5level)] [%date{dd/MM/yyyy HH:mm:ss}] [%green(%X{akkaSource})] %cyan(%logger{1}) | %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="akka.http.impl.engine.client.PoolGateway" level="INFO" />
+    <logger name="com.datastax" level="INFO"/>
+    <logger name="io.netty" level="INFO"/>
+    <logger name="akka.cluster.ddata.Replicator" level="INFO"/>
+
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
